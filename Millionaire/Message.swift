@@ -14,7 +14,7 @@ enum MessageType {
 }
 
 class Message: NSObject {
-    static let shared = Message.init()
+    static let shared = Message()
     
     private override init() {}
     

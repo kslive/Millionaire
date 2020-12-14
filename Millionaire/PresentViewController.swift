@@ -35,10 +35,12 @@ extension PresentViewController {
     
     private func setupStartButton() {
         startButton.setTitle(UI.PresentUI.start, for: .normal)
+        startButton.addTarget(self, action: #selector(touchedStartButton), for: .touchUpInside)
     }
     
     private func setupResultButton() {
         resultsButton.setTitle(UI.PresentUI.result, for: .normal)
+        resultsButton.addTarget(self, action: #selector(touchedResultsButton), for: .touchUpInside)
     }
     
     private func setupHelpButton() {
@@ -50,5 +52,15 @@ extension PresentViewController {
     @objc
     private func touchedHelpButton() {
         Message.shared.show(.info(message: MessageConstants.Info.message), sender: self)
+    }
+    
+    @objc
+    private func touchedStartButton() {
+        ViewManager.shared.showQuestions(self)
+    }
+    
+    @objc
+    private func touchedResultsButton() {
+        ViewManager.shared.showResults(self)
     }
 }

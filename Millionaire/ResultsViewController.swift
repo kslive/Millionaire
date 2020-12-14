@@ -9,21 +9,33 @@ import UIKit
 
 class ResultsViewController: UIViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var tableView: UITableView!
+    
+    var dataSource: ResultsDataSource?
+        
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
+    }
+}
 
-        // Do any additional setup after loading the view.
+extension ResultsViewController {
+    private func setup() {
+        setupTitle()
+        setupTableView()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    private func setupTitle() {
+        titleLabel.text = UI.ResultsUI.title
     }
-    */
-
+    
+    private func setupTableView() {
+        dataSource = ResultsDataSource(controller: self)
+        
+        tableView.dataSource = dataSource
+        tableView.register(UINib(nibName: String(describing: ResultsCell.self), bundle: .main) , forCellReuseIdentifier: String(describing: ResultsCell.self))
+        tableView.separatorStyle = .none
+    }
 }
+

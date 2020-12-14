@@ -13,4 +13,12 @@ enum UI {
         static let start = "Играть"
         static let result = "Результаты"
     }
+    
+    enum ResultsUI {
+        static let title = "Результаты"
+        static let resultsTitle = "Проценты:"
+        static func percent(in text: String) -> String {
+            return "\(text) из 100%"
+        }
+    }
 }

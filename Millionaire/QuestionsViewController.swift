@@ -22,7 +22,7 @@ class QuestionsViewController: UIViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
-        GameSession.shared.getResultsGame()
+        GameSession.shared.getResultsOutput()
     }
     
     private func validate(text: String, trueText: String) -> Bool {
@@ -80,7 +80,7 @@ extension QuestionsViewController {
             }
             
             let result = Result(countTrue: self.countResult)
-            GameSession.shared.addResult(result)
+            GameSession.shared.addResultsInput(result)
             
             self.tableView.reloadData()
         }

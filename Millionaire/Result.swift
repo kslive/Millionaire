@@ -7,6 +7,6 @@
 
 import Foundation
 
-struct Result {
+struct Result: Codable {
     let countTrue: Int
 }

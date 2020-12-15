@@ -20,5 +20,6 @@ enum UI {
         static func percent(in text: String) -> String {
             return "\(text) из 100%"
         }
+        static let key = "RecordsResultsUI"
     }
 }

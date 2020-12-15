@@ -8,24 +8,32 @@
 import Foundation
 
 class GameSession {
+    private let recordCaretaker = RecordsCaretaker()
+    
     static let shared = GameSession()
     
     var resultsInput: [Result] = []
-    var resultsOutput: [Result] = []
+    var resultsOutput: [Result] {
+        didSet {
+            recordCaretaker.save(resultsOutput)
+        }
+    }
     
-    private init() {}
+    private init() {
+        self.resultsOutput = recordCaretaker.retrieveResults()
+    }
     
-    func addResult(_ result: Result) {
+    func addResultsInput(_ result: Result) {
         resultsInput.append(result)
     }
     
-    func deleteResults() {
+    func deleteResultsInput() {
         resultsInput.removeAll()
     }
     
-    func getResultsGame() {
-        let res = Result(countTrue: (self.resultsInput.count * 100)/5)
+    func getResultsOutput() {
+        let res = Result(countTrue: (resultsInput.count * 100)/5)
         resultsOutput.append(res)
-        deleteResults()
+        deleteResultsInput()
     }
 }

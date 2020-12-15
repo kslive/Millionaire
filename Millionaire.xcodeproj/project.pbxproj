@@ -32,6 +32,7 @@
 		6B402997258837690038A897 /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B402996258837690038A897 /* AnswerCell.swift */; };
 		6B40299F2588523F0038A897 /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B40299E2588523F0038A897 /* Result.swift */; };
 		6B4029A4258852E70038A897 /* GameSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B4029A3258852E70038A897 /* GameSession.swift */; };
+		6BC7356325885B6200C5F375 /* RecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7356225885B6200C5F375 /* RecordsCaretaker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		6B402996258837690038A897 /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 		6B40299E2588523F0038A897 /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		6B4029A3258852E70038A897 /* GameSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameSession.swift; sourceTree = "<group>"; };
+		6BC7356225885B6200C5F375 /* RecordsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCaretaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -280,6 +282,7 @@
 			isa = PBXGroup;
 			children = (
 				6B4029A3258852E70038A897 /* GameSession.swift */,
+				6BC7356225885B6200C5F375 /* RecordsCaretaker.swift */,
 			);
 			name = Service;
 			sourceTree = "<group>";
@@ -373,6 +376,7 @@
 				6B40298A258836050038A897 /* QuestionsDataSource.swift in Sources */,
 				6B3828C125881690008ED176 /* Message.swift in Sources */,
 				6B4029A4258852E70038A897 /* GameSession.swift in Sources */,
+				6BC7356325885B6200C5F375 /* RecordsCaretaker.swift in Sources */,
 				6B049372258809D900BD59A6 /* SceneDelegate.swift in Sources */,
 				6B38287C25880C67008ED176 /* PresentViewController.swift in Sources */,
 				6B3828C525881968008ED176 /* MessageConstants.swift in Sources */,

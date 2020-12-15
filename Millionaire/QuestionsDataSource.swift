@@ -7,14 +7,6 @@
 
 import UIKit
 
-enum QuestionsType {
-    case answerOne
-    case answerTwo
-    case answerThree
-    case answerFour
-    case answerFive
-}
-
 enum QuestionsState {
     case questionsOne
     case questionsTwo

@@ -185,7 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				6B3828CD25881DF4008ED176 /* QuestionsViewController.swift */,
-				6B402988258835F40038A897 /* Data Source */,
+				6B402988258835F40038A897 /* DataSource */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -222,26 +222,26 @@
 		6B3828D5258822B1008ED176 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				6B402986258834ED0038A897 /* Data Source */,
+				6B402986258834ED0038A897 /* DataSource */,
 				6B3828D9258822CB008ED176 /* ResultsViewController.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
 		};
-		6B402986258834ED0038A897 /* Data Source */ = {
+		6B402986258834ED0038A897 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
 				6B40298325882D430038A897 /* ResultsDataSource.swift */,
 			);
-			name = "Data Source";
+			name = DataSource;
 			sourceTree = "<group>";
 		};
-		6B402988258835F40038A897 /* Data Source */ = {
+		6B402988258835F40038A897 /* DataSource */ = {
 			isa = PBXGroup;
 			children = (
 				6B402989258836050038A897 /* QuestionsDataSource.swift */,
 			);
-			name = "Data Source";
+			name = DataSource;
 			sourceTree = "<group>";
 		};
 		6B40299A25883A6A0038A897 /* Questions */ = {

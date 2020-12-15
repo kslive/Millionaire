@@ -16,7 +16,7 @@ class ResultsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        5
+        GameSession.shared.resultsOutput.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -27,7 +27,9 @@ class ResultsDataSource: NSObject, UITableViewDataSource {
 extension ResultsDataSource {
     private func setupResultsCell(for tableView: UITableView, in indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ResultsCell.self), for: indexPath) as? ResultsCell else { return UITableViewCell() }
-        cell.setup(for: "70")
+        
+        let result = GameSession.shared.resultsOutput[indexPath.row]
+        cell.setup(for: "\(result.countTrue)")
         return cell
     }
 }

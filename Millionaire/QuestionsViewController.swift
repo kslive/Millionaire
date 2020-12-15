@@ -8,7 +8,8 @@
 import UIKit
 
 class QuestionsViewController: UIViewController {
-
+    private var countResult = 0
+    
     @IBOutlet weak var tableView: UITableView!
     
     var dataSource: QuestionsDataSource?
@@ -16,6 +17,12 @@ class QuestionsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        
+        GameSession.shared.getResultsGame()
     }
     
     private func validate(text: String, trueText: String) -> Bool {
@@ -36,36 +43,45 @@ extension QuestionsViewController {
             case .questionsOne:
                 if self.validate(text: text, trueText: Answer.QuestionOne.b) {
                     self.dataSource?.state = .questionsTwo
+                    self.countResult += 1
                 } else {
                     Message.shared.show(MessageType.error(message: text), sender: self)
                 }
             case .questionsTwo:
                 if self.validate(text: text, trueText: Answer.QuestionTwo.b) {
                     self.dataSource?.state = .questionsThree
+                    self.countResult += 1
                 } else {
                     Message.shared.show(MessageType.error(message: text), sender: self)
                 }
             case .questionsThree:
                 if self.validate(text: text, trueText: Answer.QuestionThree.c) {
                     self.dataSource?.state = .questionsFour
+                    self.countResult += 1
                 } else {
                     Message.shared.show(MessageType.error(message: text), sender: self)
                 }
             case .questionsFour:
                 if self.validate(text: text, trueText: Answer.QuestionFour.c) {
                     self.dataSource?.state = .questionsFive
+                    self.countResult += 1
                 } else {
                     Message.shared.show(MessageType.error(message: text), sender: self)
                 }
             case .questionsFive:
                 if self.validate(text: text, trueText: Answer.QuestionFive.a) {
                     Message.shared.show(MessageType.success(message: MessageConstants.Success.message), sender: self)
+                    self.countResult += 1
                 } else {
                     Message.shared.show(MessageType.error(message: text), sender: self)
                 }
             default:
                 self.dismiss(animated: true)
             }
+            
+            let result = Result(countTrue: self.countResult)
+            GameSession.shared.addResult(result)
+            
             self.tableView.reloadData()
         }
         

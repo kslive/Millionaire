@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eFp-I7-6oK">
-                                <rect key="frame" x="0.0" y="194" width="414" height="518"/>
+                                <rect key="frame" x="0.0" y="194" width="414" height="618"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                             </tableView>
                         </subviews>
@@ -27,7 +27,7 @@
                         <constraints>
                             <constraint firstItem="eFp-I7-6oK" firstAttribute="leading" secondItem="Gsu-Mm-WFz" secondAttribute="leading" id="1k4-Pn-WC2"/>
                             <constraint firstItem="Gsu-Mm-WFz" firstAttribute="trailing" secondItem="eFp-I7-6oK" secondAttribute="trailing" id="9XY-sb-jwD"/>
-                            <constraint firstItem="Gsu-Mm-WFz" firstAttribute="bottom" secondItem="eFp-I7-6oK" secondAttribute="bottom" constant="150" id="fQh-XC-rCX"/>
+                            <constraint firstItem="Gsu-Mm-WFz" firstAttribute="bottom" secondItem="eFp-I7-6oK" secondAttribute="bottom" constant="50" id="fQh-XC-rCX"/>
                             <constraint firstItem="eFp-I7-6oK" firstAttribute="top" secondItem="Gsu-Mm-WFz" secondAttribute="top" constant="150" id="xxY-L8-QyG"/>
                         </constraints>
                     </view>

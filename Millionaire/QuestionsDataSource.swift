@@ -27,7 +27,7 @@ class QuestionsDataSource: NSObject, UITableViewDataSource {
     
     var controller: UIViewController
     var state: QuestionsState = .questionsOne
-    var nextHandler: (() -> Void)?
+    var nextHandler: ((String) -> Void)?
     
     init(controller: UIViewController) {
         self.controller = controller
@@ -95,7 +95,7 @@ extension QuestionsDataSource {
         guard let cell: AnswerCell = tableView.dequeueReusableCell(withIdentifier: String(describing: AnswerCell.self), for: indexPath) as? AnswerCell else { return UITableViewCell()}
         cell.setup(for: text) { [weak self] in
             guard let self = self else { return }
-            self.nextHandler?()
+            self.nextHandler?(text)
         }
         return cell
     }

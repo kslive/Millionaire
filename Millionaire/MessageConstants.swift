@@ -13,7 +13,7 @@ enum MessageConstants {
     enum Error {
         static let title = "Вы ошиблись!"
         static func message(in text: String) -> String {
-            return "Правильный ответ: \(text)"
+            return "Вы выбрали: \(text), это была ошибка..."
         }
     }
     

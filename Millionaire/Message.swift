@@ -18,20 +18,23 @@ class Message: NSObject {
     
     private override init() {}
     
-    private func alertViewController(title: String, action: String, message: String) -> UIAlertController {
+    private func alertViewController(title: String, action: String, message: String, controller: UIViewController? = nil) -> UIAlertController {
         let alertViewController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertViewController.addAction(UIAlertAction(title: action, style: .default))
+        let alertAction = UIAlertAction(title: action, style: .default) { _ in
+            controller?.dismiss(animated: true)
+        }
+        alertViewController.addAction(alertAction)
         return alertViewController
     }
     
     func show(_ message: MessageType, sender: UIViewController, after delay: TimeInterval = 0) {
         switch message {
         case .error(message: let message):
-            sender.present(alertViewController(title: MessageConstants.Error.title, action: MessageConstants.action, message: MessageConstants.Error.message(in: message)), animated: true)
+            sender.present(alertViewController(title: MessageConstants.Error.title, action: MessageConstants.action, message: MessageConstants.Error.message(in: message), controller: sender), animated: true)
         case .info(message: let message):
             sender.present(alertViewController(title: MessageConstants.Info.title, action: MessageConstants.action, message: message), animated: true)
         case .success(message: let message):
-            sender.present(alertViewController(title: MessageConstants.Success.title, action: MessageConstants.action, message: message), animated: true)
+            sender.present(alertViewController(title: MessageConstants.Success.title, action: MessageConstants.action, message: message, controller: sender), animated: true)
         }
     }
 }

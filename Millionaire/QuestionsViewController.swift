@@ -17,6 +17,10 @@ class QuestionsViewController: UIViewController {
         super.viewDidLoad()
         setup()
     }
+    
+    private func validate(text: String, trueText: String) -> Bool {
+        return text == trueText
+    }
 }
 
 extension QuestionsViewController {
@@ -26,14 +30,41 @@ extension QuestionsViewController {
     
     private func setupTableView() {
         dataSource = QuestionsDataSource(controller: self)
-        dataSource?.nextHandler = { [weak self] in
+        dataSource?.nextHandler = { [weak self] text in
             guard let self = self else { return }
             switch self.dataSource?.state {
-            case .questionsOne: self.dataSource?.state = .questionsTwo
-            case .questionsTwo: self.dataSource?.state = .questionsThree
-            case .questionsThree: self.dataSource?.state = .questionsFour
-            case .questionsFour: self.dataSource?.state = .questionsFive
-            default: self.dismiss(animated: true)
+            case .questionsOne:
+                if self.validate(text: text, trueText: Answer.QuestionOne.b) {
+                    self.dataSource?.state = .questionsTwo
+                } else {
+                    Message.shared.show(MessageType.error(message: text), sender: self)
+                }
+            case .questionsTwo:
+                if self.validate(text: text, trueText: Answer.QuestionTwo.b) {
+                    self.dataSource?.state = .questionsThree
+                } else {
+                    Message.shared.show(MessageType.error(message: text), sender: self)
+                }
+            case .questionsThree:
+                if self.validate(text: text, trueText: Answer.QuestionThree.c) {
+                    self.dataSource?.state = .questionsFour
+                } else {
+                    Message.shared.show(MessageType.error(message: text), sender: self)
+                }
+            case .questionsFour:
+                if self.validate(text: text, trueText: Answer.QuestionFour.c) {
+                    self.dataSource?.state = .questionsFive
+                } else {
+                    Message.shared.show(MessageType.error(message: text), sender: self)
+                }
+            case .questionsFive:
+                if self.validate(text: text, trueText: Answer.QuestionFive.a) {
+                    Message.shared.show(MessageType.success(message: MessageConstants.Success.message), sender: self)
+                } else {
+                    Message.shared.show(MessageType.error(message: text), sender: self)
+                }
+            default:
+                self.dismiss(animated: true)
             }
             self.tableView.reloadData()
         }

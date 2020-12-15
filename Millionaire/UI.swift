@@ -16,7 +16,7 @@ enum UI {
     
     enum ResultsUI {
         static let title = "Результаты"
-        static let resultsTitle = "Проценты:"
+        static let resultsTitle = "Правильных ответов:"
         static func percent(in text: String) -> String {
             return "\(text) из 100%"
         }

@@ -25,6 +25,11 @@
 		6B40297E25882AAC0038A897 /* ResultsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B40297D25882AAC0038A897 /* ResultsCell.xib */; };
 		6B40298125882B3D0038A897 /* ResultsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B40298025882B3D0038A897 /* ResultsCell.swift */; };
 		6B40298425882D430038A897 /* ResultsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B40298325882D430038A897 /* ResultsDataSource.swift */; };
+		6B40298A258836050038A897 /* QuestionsDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B402989258836050038A897 /* QuestionsDataSource.swift */; };
+		6B40298E258837230038A897 /* QuestionsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B40298D258837230038A897 /* QuestionsCell.xib */; };
+		6B402991258837400038A897 /* QuestionsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B402990258837400038A897 /* QuestionsCell.swift */; };
+		6B402994258837560038A897 /* AnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6B402993258837560038A897 /* AnswerCell.xib */; };
+		6B402997258837690038A897 /* AnswerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B402996258837690038A897 /* AnswerCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +53,11 @@
 		6B40297D25882AAC0038A897 /* ResultsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ResultsCell.xib; sourceTree = "<group>"; };
 		6B40298025882B3D0038A897 /* ResultsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsCell.swift; sourceTree = "<group>"; };
 		6B40298325882D430038A897 /* ResultsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsDataSource.swift; sourceTree = "<group>"; };
+		6B402989258836050038A897 /* QuestionsDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsDataSource.swift; sourceTree = "<group>"; };
+		6B40298D258837230038A897 /* QuestionsCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = QuestionsCell.xib; sourceTree = "<group>"; };
+		6B402990258837400038A897 /* QuestionsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsCell.swift; sourceTree = "<group>"; };
+		6B402993258837560038A897 /* AnswerCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AnswerCell.xib; sourceTree = "<group>"; };
+		6B402996258837690038A897 /* AnswerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnswerCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,6 +185,7 @@
 			isa = PBXGroup;
 			children = (
 				6B3828CD25881DF4008ED176 /* QuestionsViewController.swift */,
+				6B402988258835F40038A897 /* Data Source */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -183,6 +194,8 @@
 			isa = PBXGroup;
 			children = (
 				6B3828CA25881DDC008ED176 /* QuestionsViewController.storyboard */,
+				6B40299A25883A6A0038A897 /* Questions */,
+				6B40299B25883A7A0038A897 /* Answer */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -202,7 +215,6 @@
 				6B3828D6258822C1008ED176 /* ResultsViewController.storyboard */,
 				6B40297D25882AAC0038A897 /* ResultsCell.xib */,
 				6B40298025882B3D0038A897 /* ResultsCell.swift */,
-				6B40298325882D430038A897 /* ResultsDataSource.swift */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -210,9 +222,44 @@
 		6B3828D5258822B1008ED176 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				6B402986258834ED0038A897 /* Data Source */,
 				6B3828D9258822CB008ED176 /* ResultsViewController.swift */,
 			);
 			name = Controller;
+			sourceTree = "<group>";
+		};
+		6B402986258834ED0038A897 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				6B40298325882D430038A897 /* ResultsDataSource.swift */,
+			);
+			name = "Data Source";
+			sourceTree = "<group>";
+		};
+		6B402988258835F40038A897 /* Data Source */ = {
+			isa = PBXGroup;
+			children = (
+				6B402989258836050038A897 /* QuestionsDataSource.swift */,
+			);
+			name = "Data Source";
+			sourceTree = "<group>";
+		};
+		6B40299A25883A6A0038A897 /* Questions */ = {
+			isa = PBXGroup;
+			children = (
+				6B402990258837400038A897 /* QuestionsCell.swift */,
+				6B40298D258837230038A897 /* QuestionsCell.xib */,
+			);
+			name = Questions;
+			sourceTree = "<group>";
+		};
+		6B40299B25883A7A0038A897 /* Answer */ = {
+			isa = PBXGroup;
+			children = (
+				6B402993258837560038A897 /* AnswerCell.xib */,
+				6B402996258837690038A897 /* AnswerCell.swift */,
+			);
+			name = Answer;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -275,9 +322,11 @@
 				6B04937C258809DB00BD59A6 /* LaunchScreen.storyboard in Resources */,
 				6B049379258809DB00BD59A6 /* Assets.xcassets in Resources */,
 				6B3828D7258822C1008ED176 /* ResultsViewController.storyboard in Resources */,
+				6B40298E258837230038A897 /* QuestionsCell.xib in Resources */,
 				6B049377258809D900BD59A6 /* PresentViewController.storyboard in Resources */,
 				6B40297E25882AAC0038A897 /* ResultsCell.xib in Resources */,
 				6B3828CB25881DDC008ED176 /* QuestionsViewController.storyboard in Resources */,
+				6B402994258837560038A897 /* AnswerCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,11 +340,14 @@
 				6B3828D12588215B008ED176 /* ViewManager.swift in Sources */,
 				6B3828B625880D8B008ED176 /* Questions.swift in Sources */,
 				6B3828BB25881188008ED176 /* UI.swift in Sources */,
+				6B402991258837400038A897 /* QuestionsCell.swift in Sources */,
 				6B3828DA258822CB008ED176 /* ResultsViewController.swift in Sources */,
 				6B3828CE25881DF4008ED176 /* QuestionsViewController.swift in Sources */,
 				6B40298125882B3D0038A897 /* ResultsCell.swift in Sources */,
 				6B049370258809D900BD59A6 /* AppDelegate.swift in Sources */,
 				6B40298425882D430038A897 /* ResultsDataSource.swift in Sources */,
+				6B402997258837690038A897 /* AnswerCell.swift in Sources */,
+				6B40298A258836050038A897 /* QuestionsDataSource.swift in Sources */,
 				6B3828C125881690008ED176 /* Message.swift in Sources */,
 				6B049372258809D900BD59A6 /* SceneDelegate.swift in Sources */,
 				6B38287C25880C67008ED176 /* PresentViewController.swift in Sources */,

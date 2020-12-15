@@ -12,6 +12,8 @@ class ResultsCell: UITableViewCell {
     @IBOutlet weak var resultsLabel: UILabel!
     
     func setup(for text: String) {
+        selectionStyle = .none
+        
         setupTitleLabel()
         setupResultsLabel(for: text)
     }

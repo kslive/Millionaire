@@ -20,8 +20,13 @@ class ResultsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return setupResultsCell(for: tableView, in: indexPath)
+    }
+}
+
+extension ResultsDataSource {
+    private func setupResultsCell(for tableView: UITableView, in indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ResultsCell.self), for: indexPath) as? ResultsCell else { return UITableViewCell() }
-        
         cell.setup(for: "70")
         return cell
     }

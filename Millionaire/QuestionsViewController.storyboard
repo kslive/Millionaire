@@ -5,6 +5,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -15,13 +16,33 @@
                     <view key="view" contentMode="scaleToFill" id="NmO-2o-tdq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="eFp-I7-6oK">
+                                <rect key="frame" x="0.0" y="194" width="414" height="518"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="Gsu-Mm-WFz"/>
                         <color key="backgroundColor" red="1" green="0.86666666670000003" blue="0.85490196080000003" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="eFp-I7-6oK" firstAttribute="leading" secondItem="Gsu-Mm-WFz" secondAttribute="leading" id="1k4-Pn-WC2"/>
+                            <constraint firstItem="Gsu-Mm-WFz" firstAttribute="trailing" secondItem="eFp-I7-6oK" secondAttribute="trailing" id="9XY-sb-jwD"/>
+                            <constraint firstItem="Gsu-Mm-WFz" firstAttribute="bottom" secondItem="eFp-I7-6oK" secondAttribute="bottom" constant="150" id="fQh-XC-rCX"/>
+                            <constraint firstItem="eFp-I7-6oK" firstAttribute="top" secondItem="Gsu-Mm-WFz" secondAttribute="top" constant="150" id="xxY-L8-QyG"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="eFp-I7-6oK" id="d2k-CE-ObN"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJB-CP-gPd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-8419" y="1932"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

@@ -99,8 +99,8 @@
 				6B99C1692589E1B800600355 /* Application */,
 				6B99C1682589E1B600600355 /* Present */,
 				6B99C1672589E1B400600355 /* Questions */,
-				6B99C1712589E28900600355 /* Supporting */,
 				6B99C16B2589E1C000600355 /* Results */,
+				6B99C1712589E28900600355 /* Supporting */,
 			);
 			path = Millionaire;
 			sourceTree = "<group>";

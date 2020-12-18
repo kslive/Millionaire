@@ -9,6 +9,7 @@ import UIKit
 
 class QuestionsViewController: UIViewController {
     private var countResult = 0
+    private var questions = Question.getAllQuestions()
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -31,7 +32,7 @@ extension QuestionsViewController {
     }
     
     private func setupTableView() {
-        dataSource = QuestionsDataSource(controller: self)
+        dataSource = QuestionsDataSource(controller: self, questions: questions)
         dataSource?.nextHandler = { [weak self] text, isValue in
             guard let self = self else { return }
             switch isValue {

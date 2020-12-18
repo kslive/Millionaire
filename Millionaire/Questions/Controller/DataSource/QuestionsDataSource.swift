@@ -8,14 +8,16 @@
 import UIKit
 
 class QuestionsDataSource: NSObject, UITableViewDataSource {
-    private var questions = GameSession.shared.questionsOutput
+    private var questions: [Question]
+    private var controller: UIViewController
+    private var questionsChanged = GameSession.shared.questionsOutput
     private var index = 0
     
-    var controller: UIViewController
     var nextHandler: ((String, Bool?) -> ())?
     
-    init(controller: UIViewController) {
+    init(controller: UIViewController, questions: [Question]) {
         self.controller = controller
+        self.questions = questions
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -35,11 +37,17 @@ class QuestionsDataSource: NSObject, UITableViewDataSource {
 
 extension QuestionsDataSource {
     private func questionsName(for id: Int) -> String {
-        return questions[id].questions
+        switch questionsChanged.isEmpty {
+        case true: return questions[id].questions
+        case false: return questionsChanged[id].questions
+        }
     }
     
     private func answerName(for id: Int, in count: Int) -> [String: Bool] {
-        return questions[id].answers[count]
+        switch questionsChanged.isEmpty {
+        case true: return questions[id].answers[count]
+        case false: return questionsChanged[id].answers[count]
+        }
     }
 }
 

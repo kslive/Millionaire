@@ -11,11 +11,23 @@ class SettingsViewController: UIViewController {
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var chooseLabel: UILabel!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    @IBOutlet weak var normalButton: UIButton!
+    @IBOutlet weak var randomButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    private func getQuestions(for state: QuestionsState) -> NormalToRandomQuestions {
+        switch state {
+        case .normal: return NormalQuestions()
+        case .random: return RandomQuestions()
+        }
+    }
+    
+    private func dismiss() {
+        dismiss(animated: true)
     }
 }
 
@@ -23,7 +35,8 @@ extension SettingsViewController {
     private func setup() {
         setupTitleLabel()
         setupChooseLabel()
-        setupSegmentedControl()
+        setupNormalButton()
+        setupRandomButton()
     }
     
     private func setupTitleLabel() {
@@ -34,29 +47,27 @@ extension SettingsViewController {
         chooseLabel.text = UI.SettingsUI.chooseText
     }
     
-    private func setupSegmentedControl() {
-        segmentedControl.setTitle(UI.SettingsUI.normal, forSegmentAt: 0)
-        segmentedControl.setTitle(UI.SettingsUI.random, forSegmentAt: 1)
-        segmentedControl.addTarget(self, action: #selector(chooseSegmentedIndex), for: .valueChanged)
+    private func setupNormalButton() {
+        normalButton.setTitle(UI.SettingsUI.normal, for: .normal)
+        normalButton.addTarget(self, action: #selector(touchedNormalButton), for: .touchUpInside)
     }
     
-    private func getQuestions(for state: QuestionsState) -> NormalToRandomQuestions {
-        switch state {
-        case .normal: return NormalQuestions()
-        case .random: return RandomQuestions()
-        }
+    private func setupRandomButton() {
+        randomButton.setTitle(UI.SettingsUI.random, for: .normal)
+        randomButton.addTarget(self, action: #selector(touchedRandomButton), for: .touchUpInside)
     }
 }
 
 extension SettingsViewController {
     @objc
-    private func chooseSegmentedIndex() {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            GameSession.shared.addQuestions(getQuestions(for: .normal).getQuestions())
-        case 1:
-            GameSession.shared.addQuestions(getQuestions(for: .random).getQuestions())
-        default: break
-        }
+    private func touchedNormalButton() {
+        GameSession.shared.addQuestions(getQuestions(for: .normal).getQuestions())
+        dismiss()
+    }
+    
+    @objc
+    private func touchedRandomButton() {
+        GameSession.shared.addQuestions(getQuestions(for: .random).getQuestions())
+        dismiss()
     }
 }

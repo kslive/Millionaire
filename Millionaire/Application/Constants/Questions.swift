@@ -18,14 +18,14 @@ enum Questions {
 enum Answer {
     enum QuestionOne {
         static let a = ["Джон Кеннеди": false]
-        static let b = ["Франклин Рузвельт": true]
+        static let b = ["Франклин Рузвельт / true": true]
         static let c = ["Рональд Рейган": false]
         static let d = ["Никто": false]
     }
     
     enum QuestionTwo {
         static let a = ["Налог на тунеядство": false]
-        static let b = ["Налог на трусость": true]
+        static let b = ["Налог на трусость / true": true]
         static let c = ["Налог на отсутствие сапог": false]
         static let d = ["Налог на алкоголь": false]
     }
@@ -33,19 +33,19 @@ enum Answer {
     enum QuestionThree {
         static let a = ["От подателей за провоз парфюмерии": false]
         static let b = ["От сборов за не стиранные носки": false]
-        static let c = ["От налога на туалеты": true]
+        static let c = ["От налога на туалеты / true": true]
         static let d = ["От женщин легкого поведения": false]
     }
     
     enum QuestionFour {
         static let a = ["На плавки": false]
         static let b = ["На пальмы": false]
-        static let c = ["На солнце": true]
+        static let c = ["На солнце / true": true]
         static let d = ["На жизнь": false]
     }
     
     enum QuestionFive {
-        static let a = ["Папу Римского": true]
+        static let a = ["Папу Римского / true": true]
         static let b = ["Королеву": false]
         static let c = ["Директора рыбзавода": false]
         static let d = ["Командира отряда водолазов": false]

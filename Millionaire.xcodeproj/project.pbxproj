@@ -35,6 +35,9 @@
 		6B88A2BE258CD69C00727DA4 /* SettingsViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B88A2BD258CD69C00727DA4 /* SettingsViewController.storyboard */; };
 		6B88A2C1258CD6B000727DA4 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88A2C0258CD6B000727DA4 /* SettingsViewController.swift */; };
 		6B88A2CA258CDBB800727DA4 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88A2C9258CDBB800727DA4 /* Question.swift */; };
+		6B88A2CE258CEDD300727DA4 /* NormalToRandomQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88A2CD258CEDD300727DA4 /* NormalToRandomQuestions.swift */; };
+		6B88A2D2258CEE8200727DA4 /* NormalQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88A2D1258CEE8200727DA4 /* NormalQuestions.swift */; };
+		6B88A2D6258CEE9100727DA4 /* RandomQuestions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B88A2D5258CEE9100727DA4 /* RandomQuestions.swift */; };
 		6BC7356325885B6200C5F375 /* RecordsCaretaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6BC7356225885B6200C5F375 /* RecordsCaretaker.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,9 @@
 		6B88A2BD258CD69C00727DA4 /* SettingsViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = SettingsViewController.storyboard; sourceTree = "<group>"; };
 		6B88A2C0258CD6B000727DA4 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6B88A2C9258CDBB800727DA4 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
+		6B88A2CD258CEDD300727DA4 /* NormalToRandomQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalToRandomQuestions.swift; sourceTree = "<group>"; };
+		6B88A2D1258CEE8200727DA4 /* NormalQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NormalQuestions.swift; sourceTree = "<group>"; };
+		6B88A2D5258CEE9100727DA4 /* RandomQuestions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomQuestions.swift; sourceTree = "<group>"; };
 		6BC7356225885B6200C5F375 /* RecordsCaretaker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordsCaretaker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -145,6 +151,16 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		6B88A2CC258CEDAB00727DA4 /* Strategy */ = {
+			isa = PBXGroup;
+			children = (
+				6B88A2CD258CEDD300727DA4 /* NormalToRandomQuestions.swift */,
+				6B88A2D1258CEE8200727DA4 /* NormalQuestions.swift */,
+				6B88A2D5258CEE9100727DA4 /* RandomQuestions.swift */,
+			);
+			path = Strategy;
+			sourceTree = "<group>";
+		};
 		6B99C1612589E1A400600355 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
@@ -202,6 +218,7 @@
 		6B99C1672589E1B400600355 /* Questions */ = {
 			isa = PBXGroup;
 			children = (
+				6B88A2CC258CEDAB00727DA4 /* Strategy */,
 				6B88A2C8258CDBAA00727DA4 /* Model */,
 				6B99C1662589E1B200600355 /* View */,
 				6B99C1702589E28400600355 /* Controller */,
@@ -413,6 +430,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6B3828D12588215B008ED176 /* ViewManager.swift in Sources */,
+				6B88A2CE258CEDD300727DA4 /* NormalToRandomQuestions.swift in Sources */,
 				6B3828B625880D8B008ED176 /* Questions.swift in Sources */,
 				6B3828BB25881188008ED176 /* UI.swift in Sources */,
 				6B402991258837400038A897 /* QuestionsCell.swift in Sources */,
@@ -427,10 +445,12 @@
 				6B402997258837690038A897 /* AnswerCell.swift in Sources */,
 				6B40298A258836050038A897 /* QuestionsDataSource.swift in Sources */,
 				6B3828C125881690008ED176 /* Message.swift in Sources */,
+				6B88A2D6258CEE9100727DA4 /* RandomQuestions.swift in Sources */,
 				6B4029A4258852E70038A897 /* GameSession.swift in Sources */,
 				6BC7356325885B6200C5F375 /* RecordsCaretaker.swift in Sources */,
 				6B049372258809D900BD59A6 /* SceneDelegate.swift in Sources */,
 				6B38287C25880C67008ED176 /* PresentViewController.swift in Sources */,
+				6B88A2D2258CEE8200727DA4 /* NormalQuestions.swift in Sources */,
 				6B3828C525881968008ED176 /* MessageConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

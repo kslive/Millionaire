@@ -8,7 +8,7 @@
 import UIKit
 
 class QuestionsDataSource: NSObject, UITableViewDataSource {
-    private var questionsNormal = Question.getNormalQuestions()
+    private var questionsNormal = Question.getRandomQuestions()
     private var index = 0
     
     var controller: UIViewController

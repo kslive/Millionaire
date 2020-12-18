@@ -43,5 +43,10 @@ struct Question {
                                            Answer.QuestionFive.b,
                                            Answer.QuestionFive.c,
                                            Answer.QuestionFive.d])]
+        
+    }
+    
+    static func getRandomQuestions() -> [Question] {
+        return getNormalQuestions().shuffled()
     }
 }

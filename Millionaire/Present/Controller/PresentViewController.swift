@@ -13,6 +13,7 @@ class PresentViewController: UIViewController {
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var resultsButton: UIButton!
     @IBOutlet weak var helpButton: UIButton!
+    @IBOutlet weak var settingsButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +28,7 @@ extension PresentViewController {
         setupStartButton()
         setupResultButton()
         setupHelpButton()
+        setupSettingsButton()
     }
     
     private func setupTitle() {
@@ -46,6 +48,10 @@ extension PresentViewController {
     private func setupHelpButton() {
         helpButton.addTarget(self, action: #selector(touchedHelpButton), for: .touchUpInside)
     }
+    
+    private func setupSettingsButton() {
+        settingsButton.addTarget(self, action: #selector(touchedSettingsButton), for: .touchUpInside)
+    }
 }
 
 extension PresentViewController {
@@ -62,5 +68,10 @@ extension PresentViewController {
     @objc
     private func touchedResultsButton() {
         ViewManager.shared.showResults(self)
+    }
+    
+    @objc
+    private func touchedSettingsButton() {
+        ViewManager.shared.showSettings(self)
     }
 }

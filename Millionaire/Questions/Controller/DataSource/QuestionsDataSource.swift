@@ -7,19 +7,13 @@
 
 import UIKit
 
-enum QuestionsState {
-    case questionsOne
-    case questionsTwo
-    case questionsThree
-    case questionsFour
-    case questionsFive    
-}
-
 class QuestionsDataSource: NSObject, UITableViewDataSource {
+    private var questionsNormal = Question.getNormalQuestions()
+    private var index = 0
     
     var controller: UIViewController
-    var state: QuestionsState = .questionsOne
-    var nextHandler: ((String) -> Void)?
+    var nextHandler: ((String, Bool) -> ())?
+    var nextHandlerWin: (() -> ())?
     
     init(controller: UIViewController) {
         self.controller = controller
@@ -30,49 +24,23 @@ class QuestionsDataSource: NSObject, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        switch state {
-        case .questionsOne:
-            switch indexPath.row {
-            case 0: return setupQuestionsCell(for: tableView, in: indexPath, for: Questions.questionOne)
-            case 1: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionOne.a)
-            case 2: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionOne.b)
-            case 3: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionOne.c)
-            default: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionOne.d)
-            }
-        case .questionsTwo:
-            switch indexPath.row {
-            case 0: return setupQuestionsCell(for: tableView, in: indexPath, for: Questions.questionTwo)
-            case 1: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionTwo.a)
-            case 2: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionTwo.b)
-            case 3: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionTwo.c)
-            default: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionTwo.d)
-            }
-        case .questionsThree:
-            switch indexPath.row {
-            case 0: return setupQuestionsCell(for: tableView, in: indexPath, for: Questions.questionThree)
-            case 1: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionThree.a)
-            case 2: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionThree.b)
-            case 3: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionThree.c)
-            default: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionThree.d)
-            }
-        case .questionsFour:
-            switch indexPath.row {
-            case 0: return setupQuestionsCell(for: tableView, in: indexPath, for: Questions.questionFour)
-            case 1: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionFour.a)
-            case 2: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionFour.b)
-            case 3: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionFour.c)
-            default: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionFour.d)
-            }
-        case .questionsFive:
-            switch indexPath.row {
-            case 0: return setupQuestionsCell(for: tableView, in: indexPath, for: Questions.questionFive)
-            case 1: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionFive.a)
-            case 2: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionFive.b)
-            case 3: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionFive.c)
-            default: return setupAnswerCell(for: tableView, in: indexPath, for: Answer.QuestionFive.d)
-            }
+        switch indexPath.row {
+        case 0: return setupQuestionsCell(for: tableView, in: indexPath, for: questionsName(for: index))
+        case 1: return setupAnswerCell(for: tableView, in: indexPath, for: answerName(for: index, in: 0))
+        case 2: return setupAnswerCell(for: tableView, in: indexPath, for: answerName(for: index, in: 1))
+        case 3: return setupAnswerCell(for: tableView, in: indexPath, for: answerName(for: index, in: 2))
+        default: return setupAnswerCell(for: tableView, in: indexPath, for: answerName(for: index, in: 3))
         }
+    }
+}
+
+extension QuestionsDataSource {
+    private func questionsName(for id: Int) -> String {
+        return questionsNormal[id].questions
+    }
+    
+    private func answerName(for id: Int, in count: Int) -> [String: Bool] {
+        return questionsNormal[id].answers[count]
     }
 }
 
@@ -83,11 +51,21 @@ extension QuestionsDataSource {
         return cell
     }
     
-    private func setupAnswerCell(for tableView: UITableView, in indexPath: IndexPath, for text: String) -> UITableViewCell {
-        guard let cell: AnswerCell = tableView.dequeueReusableCell(withIdentifier: String(describing: AnswerCell.self), for: indexPath) as? AnswerCell else { return UITableViewCell()}
+    private func setupAnswerCell(for tableView: UITableView, in indexPath: IndexPath, for value: [String: Bool]) -> UITableViewCell {
+        guard
+            let cell: AnswerCell = tableView.dequeueReusableCell(withIdentifier: String(describing: AnswerCell.self), for: indexPath) as? AnswerCell,
+            let text = value.keys.first,
+            let isValue = value.values.first
+        else { return UITableViewCell()}
+        
         cell.setup(for: text) { [weak self] in
             guard let self = self else { return }
-            self.nextHandler?(text)
+            switch self.index {
+            case 0...(self.questionsNormal.count - 2):
+                self.index += 1
+                self.nextHandler?(text, isValue)
+            default: self.nextHandlerWin?()
+            }
         }
         return cell
     }

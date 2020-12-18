@@ -17,37 +17,37 @@ enum Questions {
 
 enum Answer {
     enum QuestionOne {
-        static let a = "Джон Кеннеди"
-        static let b = "Франклин Рузвельт" // true
-        static let c = "Рональд Рейган"
-        static let d = "Никто"
+        static let a = ["Джон Кеннеди": false]
+        static let b = ["Франклин Рузвельт": true]
+        static let c = ["Рональд Рейган": false]
+        static let d = ["Никто": false]
     }
     
     enum QuestionTwo {
-        static let a = "Налог на тунеядство"
-        static let b = "Налог на трусость" // true
-        static let c = "Налог на отсутствие сапог"
-        static let d = "Налог на алкоголь"
+        static let a = ["Налог на тунеядство": false]
+        static let b = ["Налог на трусость": true]
+        static let c = ["Налог на отсутствие сапог": false]
+        static let d = ["Налог на алкоголь": false]
     }
     
     enum QuestionThree {
-        static let a = "От подателей за провоз парфюмерии"
-        static let b = "От сборов за не стиранные носки"
-        static let c = "От налога на туалеты" // true
-        static let d = "От женщин легкого поведения"
+        static let a = ["От подателей за провоз парфюмерии": false]
+        static let b = ["От сборов за не стиранные носки": false]
+        static let c = ["От налога на туалеты": true]
+        static let d = ["От женщин легкого поведения": false]
     }
     
     enum QuestionFour {
-        static let a = "На плавки"
-        static let b = "На пальмы"
-        static let c = "На солнце" // true
-        static let d = "На жизнь"
+        static let a = ["На плавки": false]
+        static let b = ["На пальмы": false]
+        static let c = ["На солнце": true]
+        static let d = ["На жизнь": false]
     }
     
     enum QuestionFive {
-        static let a = "Папу Римского" // true
-        static let b = "Королеву"
-        static let c = "Директора рыбзавода"
-        static let d = "Командира отряда водолазов"
+        static let a = ["Папу Римского": true]
+        static let b = ["Королеву": false]
+        static let c = ["Директора рыбзавода": false]
+        static let d = ["Командира отряда водолазов": false]
     }
 }

@@ -22,4 +22,11 @@ enum UI {
         }
         static let key = "RecordsResultsUI"
     }
+    
+    enum SettingsUI {
+        static let title = "Настройки"
+        static let chooseText = "Выберите последовательность вопросов:"
+        static let normal = "Последовательно"
+        static let random = "Рандомно"
+    }
 }

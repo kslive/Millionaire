@@ -19,6 +19,10 @@ class PresentViewController: UIViewController {
         super.viewDidLoad()
         setup()
     }
+    
+    deinit {
+        print("DEINIT: PresentViewController")
+    }
 }
 
 extension PresentViewController {

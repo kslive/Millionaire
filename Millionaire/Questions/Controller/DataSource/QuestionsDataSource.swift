@@ -9,7 +9,7 @@ import UIKit
 
 class QuestionsDataSource: NSObject, UITableViewDataSource {
     private var questions: [Question]
-    private var controller: UIViewController
+    private weak var controller: UIViewController?
     private var questionsChanged = GameSession.shared.questionsOutput
     private var index = 0
     

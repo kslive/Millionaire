@@ -12,6 +12,7 @@ class QuestionsViewController: UIViewController {
     private var questions = Question.getAllQuestions()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var dataSource: QuestionsDataSource?
     
@@ -20,9 +21,18 @@ class QuestionsViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupTitleLabel(for: self.countResult + 1)
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         GameSession.shared.getResultsOutput()
+    }
+    
+    deinit {
+        print("DEINIT: QuestionsViewController")
     }
 }
 
@@ -39,6 +49,7 @@ extension QuestionsViewController {
             case false: Message.shared.show(.error(message: text), sender: self)
             default:
                 self.countResult += 1
+                self.setupTitleLabel(for: self.countResult + 1)
                 self.tableView.reloadData()
                 if isValue == nil {
                     Message.shared.show(.success(message: MessageConstants.Success.message), sender: self)
@@ -52,5 +63,11 @@ extension QuestionsViewController {
         tableView.register(UINib(nibName: String(describing: AnswerCell.self), bundle: .main) , forCellReuseIdentifier: String(describing: AnswerCell.self))
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
+    }
+    
+    private func setupTitleLabel(for number: Int) {
+        if number <= 5 {
+            titleLabel.text = UI.QuestionUI.title(for: number)
+        }
     }
 }

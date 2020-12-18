@@ -19,6 +19,10 @@ class SettingsViewController: UIViewController {
         setup()
     }
     
+    deinit {
+        print("DEINIT: SettingsViewController")
+    }
+    
     private func getQuestions(for state: QuestionsState) -> NormalToRandomQuestions {
         switch state {
         case .normal: return NormalQuestions()

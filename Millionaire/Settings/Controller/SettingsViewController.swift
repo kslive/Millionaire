@@ -37,5 +37,26 @@ extension SettingsViewController {
     private func setupSegmentedControl() {
         segmentedControl.setTitle(UI.SettingsUI.normal, forSegmentAt: 0)
         segmentedControl.setTitle(UI.SettingsUI.random, forSegmentAt: 1)
+        segmentedControl.addTarget(self, action: #selector(chooseSegmentedIndex), for: .valueChanged)
+    }
+    
+    private func getQuestions(for state: QuestionsState) -> NormalToRandomQuestions {
+        switch state {
+        case .normal: return NormalQuestions()
+        case .random: return RandomQuestions()
+        }
+    }
+}
+
+extension SettingsViewController {
+    @objc
+    private func chooseSegmentedIndex() {
+        switch segmentedControl.selectedSegmentIndex {
+        case 0:
+            GameSession.shared.addQuestions(getQuestions(for: .normal).getQuestions())
+        case 1:
+            GameSession.shared.addQuestions(getQuestions(for: .random).getQuestions())
+        default: break
+        }
     }
 }

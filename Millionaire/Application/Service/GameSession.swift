@@ -15,14 +15,24 @@ class GameSession {
     var resultsInput: [Result] = []
     var resultsOutput: [Result] {
         didSet {
-            recordCaretaker.save(resultsOutput)
+            recordCaretaker.saveResult(resultsOutput)
+        }
+    }
+    var questionsOutput: [Question] {
+        didSet {
+            recordCaretaker.saveQuestions(questionsOutput)
         }
     }
     
     private init() {
         self.resultsOutput = recordCaretaker.retrieveResults()
+        self.questionsOutput = recordCaretaker.retrieveQuestions()
     }
-    
+}
+
+// MARK: - RESULT
+
+extension GameSession {
     func addResultsInput(_ result: Result) {
         resultsInput.append(result)
     }
@@ -35,5 +45,18 @@ class GameSession {
         let res = Result(countTrue: (resultsInput.count * 100)/5)
         resultsOutput.append(res)
         deleteResultsInput()
+    }
+}
+
+// MARK: - QUESTIONS
+
+extension GameSession {
+    func addQuestions(_ questions: [Question]) {
+        deleteQuestions()
+        questionsOutput.append(contentsOf: questions)
+    }
+    
+    func deleteQuestions() {
+        questionsOutput.removeAll()
     }
 }

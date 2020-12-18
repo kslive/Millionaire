@@ -238,9 +238,9 @@
 		6B99C1692589E1B800600355 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				6B99C1622589E1A600600355 /* Helpers */,
 				6B99C1642589E1AB00600355 /* Service */,
 				6B99C1632589E1A900600355 /* Constants */,
-				6B99C1622589E1A600600355 /* Helpers */,
 				6B99C1612589E1A400600355 /* Controller */,
 			);
 			path = Application;

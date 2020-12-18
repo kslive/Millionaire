@@ -35,15 +35,15 @@ extension QuestionsViewController {
         dataSource?.nextHandler = { [weak self] text, isValue in
             guard let self = self else { return }
             switch isValue {
-            case true:
+            case false: Message.shared.show(.error(message: text), sender: self)
+            default:
                 self.countResult += 1
                 self.tableView.reloadData()
-            case false: Message.shared.show(.error(message: text), sender: self)
+                if isValue == nil {
+                    Message.shared.show(.success(message: MessageConstants.Success.message), sender: self)
+                }
             }
             GameSession.shared.addResultsInput(Result(countTrue: self.countResult))
-        }
-        dataSource?.nextHandlerWin = {
-            Message.shared.show(.success(message: MessageConstants.Success.message), sender: self)
         }
         
         tableView.dataSource = dataSource

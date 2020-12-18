@@ -28,5 +28,6 @@ enum UI {
         static let chooseText = "Выберите последовательность вопросов:"
         static let normal = "Последовательно"
         static let random = "Рандомно"
+        static let key = "RecordsSegmentedValueUI"
     }
 }

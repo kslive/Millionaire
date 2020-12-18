@@ -7,6 +7,10 @@
 
 import Foundation
 
+enum QuestionsState {
+    case normal, random
+}
+
 protocol NormalToRandomQuestions {
     func getQuestions() -> [Question]
 }

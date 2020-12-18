@@ -8,12 +8,11 @@
 import UIKit
 
 class QuestionsDataSource: NSObject, UITableViewDataSource {
-    private var questionsNormal = Question.getRandomQuestions()
+    private var questions = GameSession.shared.questionsOutput
     private var index = 0
     
     var controller: UIViewController
-    var nextHandler: ((String, Bool) -> ())?
-    var nextHandlerWin: (() -> ())?
+    var nextHandler: ((String, Bool?) -> ())?
     
     init(controller: UIViewController) {
         self.controller = controller
@@ -36,11 +35,11 @@ class QuestionsDataSource: NSObject, UITableViewDataSource {
 
 extension QuestionsDataSource {
     private func questionsName(for id: Int) -> String {
-        return questionsNormal[id].questions
+        return questions[id].questions
     }
     
     private func answerName(for id: Int, in count: Int) -> [String: Bool] {
-        return questionsNormal[id].answers[count]
+        return questions[id].answers[count]
     }
 }
 
@@ -61,10 +60,11 @@ extension QuestionsDataSource {
         cell.setup(for: text) { [weak self] in
             guard let self = self else { return }
             switch self.index {
-            case 0...(self.questionsNormal.count - 2):
+            case 0...(self.questions.count - 2):
                 self.index += 1
                 self.nextHandler?(text, isValue)
-            default: self.nextHandlerWin?()
+            default:
+                self.nextHandler?("", nil)
             }
         }
         return cell

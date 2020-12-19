@@ -22,4 +22,18 @@ enum UI {
         }
         static let key = "RecordsResultsUI"
     }
+    
+    enum QuestionUI {
+        static func title(for number: Int) -> String {
+            return "Вопрос \(number) из 5"
+        }
+    }
+    
+    enum SettingsUI {
+        static let title = "Настройки"
+        static let chooseText = "Выберите последовательность вопросов:"
+        static let normal = "По порядку"
+        static let random = "Перемешать"
+        static let key = "RecordsSegmentedValueUI"
+    }
 }

@@ -9,8 +9,10 @@ import UIKit
 
 class QuestionsViewController: UIViewController {
     private var countResult = 0
+    private var questions = Question.getAllQuestions()
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var titleLabel: UILabel!
     
     var dataSource: QuestionsDataSource?
     
@@ -19,14 +21,18 @@ class QuestionsViewController: UIViewController {
         setup()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.setupTitleLabel(for: self.countResult + 1)
+    }
+    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        
         GameSession.shared.getResultsOutput()
     }
     
-    private func validate(text: String, trueText: String) -> Bool {
-        return text == trueText
+    deinit {
+        print("DEINIT: QuestionsViewController")
     }
 }
 
@@ -36,66 +42,32 @@ extension QuestionsViewController {
     }
     
     private func setupTableView() {
-        dataSource = QuestionsDataSource(controller: self)
-        dataSource?.nextHandler = { [weak self] text in
+        dataSource = QuestionsDataSource(controller: self, questions: questions)
+        dataSource?.nextHandler = { [weak self] text, isValue in
             guard let self = self else { return }
-            switch self.dataSource?.state {
-            case .questionsOne:
-                if self.validate(text: text, trueText: Answer.QuestionOne.b) {
-                    self.dataSource?.state = .questionsTwo
-                    self.countResult += 1
-                } else {
-                    Message.shared.show(MessageType.error(message: text), sender: self)
-                }
-            case .questionsTwo:
-                if self.validate(text: text, trueText: Answer.QuestionTwo.b) {
-                    self.dataSource?.state = .questionsThree
-                    self.countResult += 1
-                } else {
-                    Message.shared.show(MessageType.error(message: text), sender: self)
-                }
-            case .questionsThree:
-                if self.validate(text: text, trueText: Answer.QuestionThree.c) {
-                    self.dataSource?.state = .questionsFour
-                    self.countResult += 1
-                } else {
-                    Message.shared.show(MessageType.error(message: text), sender: self)
-                }
-            case .questionsFour:
-                if self.validate(text: text, trueText: Answer.QuestionFour.c) {
-                    self.dataSource?.state = .questionsFive
-                    self.countResult += 1
-                } else {
-                    Message.shared.show(MessageType.error(message: text), sender: self)
-                }
-            case .questionsFive:
-                if self.validate(text: text, trueText: Answer.QuestionFive.a) {
-                    Message.shared.show(MessageType.success(message: MessageConstants.Success.message), sender: self)
-                    self.countResult += 1
-                } else {
-                    Message.shared.show(MessageType.error(message: text), sender: self)
-                }
+            switch isValue {
+            case false: Message.shared.show(.error(message: text), sender: self)
             default:
-                self.dismiss(animated: true)
+                self.countResult += 1
+                self.setupTitleLabel(for: self.countResult + 1)
+                self.tableView.reloadData()
+                if isValue == nil {
+                    Message.shared.show(.success(message: MessageConstants.Success.message), sender: self)
+                }
             }
-            
-            let result = Result(countTrue: self.countResult)
-            GameSession.shared.addResultsInput(result)
-            
-            self.tableView.reloadData()
+            GameSession.shared.addResultsInput(Result(countTrue: self.countResult))
         }
         
         tableView.dataSource = dataSource
-        tableView.delegate = self
         tableView.register(UINib(nibName: String(describing: QuestionsCell.self), bundle: .main) , forCellReuseIdentifier: String(describing: QuestionsCell.self))
         tableView.register(UINib(nibName: String(describing: AnswerCell.self), bundle: .main) , forCellReuseIdentifier: String(describing: AnswerCell.self))
         tableView.separatorStyle = .none
         tableView.backgroundColor = .clear
     }
-}
-
-extension QuestionsViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
+    
+    private func setupTitleLabel(for number: Int) {
+        if number <= 5 {
+            titleLabel.text = UI.QuestionUI.title(for: number)
+        }
     }
 }

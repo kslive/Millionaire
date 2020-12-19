@@ -8,15 +8,18 @@
 import UIKit
 
 class ResultsViewController: UIViewController {
+    private var dataSource: ResultsDataSource?
 
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    
-    var dataSource: ResultsDataSource?
         
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+    }
+    
+    deinit {
+        print("DEINIT: ResultsViewController")
     }
 }
 

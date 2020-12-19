@@ -21,4 +21,9 @@ class ViewManager {
         let resultsViewController = UIStoryboard(name: String(describing: ResultsViewController.self), bundle: nil).instantiateViewController(withIdentifier: String(describing: ResultsViewController.self)) as! ResultsViewController
         controller.present(resultsViewController, animated: true)
     }
+    
+    func showSettings(_ controller: UIViewController) {
+        let settingsViewController = UIStoryboard(name: String(describing: SettingsViewController.self), bundle: nil).instantiateViewController(withIdentifier: String(describing: SettingsViewController.self)) as! SettingsViewController
+        controller.present(settingsViewController, animated: true)
+    }
 }

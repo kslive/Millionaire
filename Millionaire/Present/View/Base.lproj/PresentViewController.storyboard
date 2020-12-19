@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -49,6 +49,11 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sEU-pT-p7G">
+                                <rect key="frame" x="20" y="94" width="20.5" height="22"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" image="circle.grid.2x2.fill" catalog="system"/>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="0.8666666666666667" blue="0.85490196078431369" alpha="1" colorSpace="calibratedRGB"/>
@@ -57,7 +62,9 @@
                             <constraint firstItem="wwC-CG-lhF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9i3-8S-tPZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="hi8-mT-vXv" secondAttribute="trailing" constant="40" id="A68-uS-Kff"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yIf-cc-KmR" secondAttribute="trailing" constant="20" id="CUw-0i-o7X"/>
+                            <constraint firstItem="sEU-pT-p7G" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="GCn-XX-POu"/>
                             <constraint firstItem="hi8-mT-vXv" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="GL9-U1-DFk"/>
+                            <constraint firstItem="sEU-pT-p7G" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="NjD-41-wBB"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="wwC-CG-lhF" secondAttribute="trailing" constant="20" id="V6w-9a-3i2"/>
                             <constraint firstItem="hi8-mT-vXv" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ckA-ej-Nfo"/>
                             <constraint firstItem="hi8-mT-vXv" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="40" id="egT-X6-FFa"/>
@@ -68,16 +75,18 @@
                     <connections>
                         <outlet property="helpButton" destination="yIf-cc-KmR" id="44b-7J-so9"/>
                         <outlet property="resultsButton" destination="DKd-4u-aoP" id="nn0-MJ-GWW"/>
+                        <outlet property="settingsButton" destination="sEU-pT-p7G" id="Agq-AU-17W"/>
                         <outlet property="startButton" destination="goo-Es-XCx" id="i9f-KH-THQ"/>
                         <outlet property="titleLabel" destination="wwC-CG-lhF" id="jjC-8p-KGv"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-165" y="106"/>
+            <point key="canvasLocation" x="-165.21739130434784" y="105.80357142857143"/>
         </scene>
     </scenes>
     <resources>
+        <image name="circle.grid.2x2.fill" catalog="system" width="128" height="112"/>
         <image name="info.circle" catalog="system" width="128" height="121"/>
     </resources>
 </document>
